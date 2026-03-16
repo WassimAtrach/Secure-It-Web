@@ -1,0 +1,83 @@
+<%- include('../Includes/head.ejs') %>
+<%- include('../Includes/menu.ejs') %>
+
+    <section class="hero">
+        <h2>Learning Center</h2>
+        <p>Choose a topic and start building cyber awareness.</p>
+    </section>
+
+    <div class="container">
+        <main class="main-content">
+            <section class="learning-section" id="lessonList">
+                <h2>Available Lessons</h2>
+
+                <article class="content-card learn-lesson-card" data-lesson="phishing">
+                    <h3>Phishing Attacks</h3>
+                    <p>Learn how scammers trick users through emails and messages.</p>
+                        <div class="lesson-actions">
+                            <button class="cta-btn small start-lesson">Start Lesson</button>
+                            <a class="cta-btn small" href="/quiz">Start quiz</a>
+                        </div>
+                </article>
+
+                <article class="content-card learn-lesson-card" data-lesson="password">
+                    <h3>Password Safety</h3>
+                    <p>Create strong passwords and avoid common mistakes.</p>
+                        <div class="lesson-actions">
+                            <button class="cta-btn small start-lesson">Start Lesson</button>
+                            <button class="cta-btn small quiz-trigger">Start quiz</button>
+                        </div>
+                </article>
+
+                <article class="content-card learn-lesson-card" data-lesson="social">
+                    <h3>Social Engineering</h3>
+                    <p>Understand psychological manipulation used by attackers.</p>
+                        <div class="lesson-actions">
+                            <button class="cta-btn small start-lesson">Start Lesson</button>
+                            <button class="cta-btn small quiz-trigger">Start quiz</button>
+                        </div>
+                </article>
+
+                <article class="content-card learn-lesson-card" data-lesson="browsing">
+                    <h3>Safe Browsing</h3>
+                    <p>Identify fake websites and avoid dangerous downloads.</p>
+                        <div class="lesson-actions">
+                            <button class="cta-btn small start-lesson">Start Lesson</button>
+                            <button class="cta-btn small quiz-trigger">Start quiz</button>
+                        </div>
+                </article>
+            </section>
+
+            <section class="learning-section" id="lessonContent" style="display:none;">
+                </section>
+        </main>
+
+         <aside class="info-aside">
+            <div class="aside-box">
+                <h3>POV</h3>
+                <p>Me after learning from Secure-It → hacker mode activated 😎💻</p>
+                <img src="/Images/laptop-hacking.gif" alt="Phishing example GIF" style="width:100%; border-radius:6px; margin-top: 10px;">
+            </div>
+ 
+             <div class="aside-box">
+                <h3>Extra Resources</h3>
+                <p>Check out more detailed guides and tutorials on cybersecurity:</p>
+                <ul style="margin-left: 20px; margin-bottom: 12px;">
+                    <li><a href="/resources" target="_blank">External cybersecurity resources</a></li>
+                </ul>
+            </div>
+ 
+            <div class="aside-box">
+                <h3>Fun Facts & Myth Busting</h3>
+                <ul style="margin-left: 20px; margin-bottom: 12px;">
+                    <li><strong>Fact:</strong> Over 90% of cyber attacks start with phishing emails.</li>
+                    <li><strong>Myth:</strong> Strong antivirus software alone will keep you safe online. </li>
+                    <li><strong>Fact:</strong> Most attacks exploit human behavior, not software vulnerabilities.</li>
+                </ul>
+            </div>
+        </aside>
+    </div>
+
+    <script src="/JS/learn.js"></script>
+
+<%- include('../Includes/end.ejs') %>

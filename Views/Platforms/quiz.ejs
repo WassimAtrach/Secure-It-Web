@@ -1,0 +1,80 @@
+<%- include('../Includes/head.ejs') %>
+<%- include('../Includes/menu.ejs') %>
+
+<section class="hero">
+    <h2>Phishing Awareness Quiz</h2>
+    <p>Test your ability to identify phishing and scam scenarios.</p>
+</section>
+
+<main class="page-content">
+    <form id="phishing-quiz" class="questions" aria-labelledby="learn-questions" 
+          action="http://wassimat.mtacloud.co.il/WassimNoaLala-SecureIt-FinalProject/Includes/Quiz.php" method="POST">
+        
+        <h3 id="learn-questions">Quick Check: Phishing &amp; Scams (Yes / No)</h3>
+        
+        <fieldset>
+            <legend>1. The "Urgent Security" Email (Beginner)</legend>
+            <p>Scenario: You receive an email from "Security-Alert@Paypa1.com" with the subject line "Immediate Action Required:
+            Your account has been suspended." The email asks you to click a link to verify your identity within 24 hours or your funds will be frozen.
+            Question: Is this likely a legitimate communication from PayPal?</p>
+            <label><input type="radio" name="q1" value="yes"> Yes</label>
+            <label><input type="radio" name="q1" value="no"> No</label>
+        </fieldset>
+
+        <fieldset>
+            <legend>2. The Shared Document Invite (Beginner)</legend>
+            <p>Scenario: You get a notification from a cloud storage service (like Google Drive or Dropbox) saying a person you don’t recognize,
+            "John123," has shared a file named "Invoice_2026_Direct_Payment.pdf" with you. You aren't expecting any invoices.
+            Question: Is it safe to click "Open" to see what the document is?</p>
+            <label><input type="radio" name="q2" value="yes"> Yes</label>
+            <label><input type="radio" name="q2" value="no"> No</label>
+        </fieldset>
+
+        <fieldset>
+            <legend>3. The "IT Support" Pop-up (Intermediate)</legend>
+            <p>Scenario: While browsing a news site, a bright red window pops up on your screen. It says your computer is infected with three viruses and
+            provides a "1-800" number to call Microsoft Support immediately.
+            Question: Should you call the number to get help cleaning your computer?</p>
+            <label><input type="radio" name="q3" value="yes"> Yes</label>
+            <label><input type="radio" name="q3" value="no"> No</label>
+        </fieldset>
+
+        <fieldset>
+            <legend>4. The Expected Password Reset (Beginner)</legend>
+            <p>Scenario: You just clicked "Forgot Password" on a website. You receive an email from the official domain.
+            Question: Is it safe to click the link in this email?</p>
+            <label><input type="radio" name="q4" value="yes"> Yes</label>
+            <label><input type="radio" name="q4" value="no"> No</label>
+        </fieldset>
+
+        <fieldset>
+            <legend>5. The Official App Store Update (Intermediate)</legend>
+            <p>Scenario: A banking app directs you to the official Apple/Google store for a security update.
+            Question: Is it safe to proceed with this update?</p>
+            <label><input type="radio" name="q5" value="yes"> Yes</label>
+            <label><input type="radio" name="q5" value="no"> No</label>
+        </fieldset>
+
+        <fieldset>
+            <legend>6. SMS Image</legend>
+            <p>According to the following text, would you send the information of the listed number? and why?</p>
+            <img id="phishing-sms-image" src="/Images/PhisingImage.jpeg" alt="SMS Scam Example" class="quiz-image">
+            <input type="text" name="q6" placeholder="Your answer here">
+        </fieldset>
+
+        <fieldset>
+            <legend>7. PayPal Sent you an email</legend>
+            <p>Is this a legitimate email? How can you tell?
+            <img id="phishing-email-image" src="/Images/PaypalPhishing.avif" alt="Email Scam Example" class="quiz-image">                
+            </p>
+            <input type="text" name="q7" placeholder="Your answer here">
+        </fieldset>
+
+        <div class="form-actions">
+            <button type="submit" class="cta-btn">Submit Answers</button>
+        </div>
+    </form>
+</main>
+
+<script src="/JS/quiz.js" defer></script>
+<%- include('../Includes/end.ejs') %>

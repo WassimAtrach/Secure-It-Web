@@ -1,0 +1,107 @@
+<%- include('../Includes/head.ejs') %>
+<%- include('../Includes/menu.ejs') %>
+
+    <div class="container">
+        <main class="main-content">
+            <section class="learning-section">
+                <h2>Account Overview</h2>
+
+                <article class="content-card">
+                    <div class="profile-header">
+                        <div id="profileImageContainer"></div> <div>
+                            <h3><%= user ? user.name : 'User' %></h3>
+                            <p><%= user ? user.email : '' %></p>
+                        </div>
+                    </div>
+                </article>
+
+                <h3>Learning Progress</h3>
+                <article class="content-card">
+                    <div class="progress-tracker" data-audits="<%= audits.length %>" data-goals="<%= goals.length %>" data-tools="<%= tools.length %>">
+                        <div class="progress-header">
+                            <span>Overall Progress</span>
+                            <span class="progress-percent">0%</span>
+                        </div>
+                        <div class="progress-bar-container">
+                            <div class="progress-bar"></div>
+                        </div>
+                        <div class="progress-details" id="progressDetails">
+                            <strong>Audits:</strong> <%= audits.length %> | <strong>Goals:</strong> <%= goals.length %> | <strong>Tools:</strong> <%= tools.length %>
+                        </div>
+                    </div>
+                </article>
+
+                <h3>Earned Badges</h3>
+                <div class="resource-grid">
+                    <article class="content-card badge-card">
+                        <span class="badge-icon">🛡️</span>
+                        <h4>Phishing Pro</h4>
+                        <p id="phishingBadgeText">Completed the Phishing Quiz with 100%</p>
+                        <p id="phishingBadgeMeta" class="muted"></p>
+                    </article>
+                    <article class="content-card badge-card locked">
+                        <span class="badge-icon">🔑</span>
+                        <h4>Vault Keeper</h4>
+                        <p>Complete Password Safety to unlock</p>
+                    </article>
+                </div>
+            </section>
+        </main>
+
+        <aside class="info-aside">
+            <div class="aside-box">
+                <h3>Account Actions</h3>
+                <button class="cta-btn small full" onclick="alert('Feature coming soon!')">Change Password</button>
+                <button id="exportBtn" class="cta-btn small full export-btn">Export My Data</button>
+                <p id="exportMessage" class="muted is-hidden">Feature will come soon</p>
+            </div>
+            
+            <div class="aside-box privacy-tip">
+                <h3>Privacy Tip</h3>
+                <p>Ensure your recovery email is up to date to prevent losing access to your progress.</p>
+            </div>
+        </aside>
+    </div>
+
+    <article class="content-card">
+    <h3>Security Checklist</h3>
+    <ul class="resource-list">
+        <li><input type="checkbox" checked disabled> Account Created</li>
+        <li><input type="checkbox" checked disabled> First Lesson Completed</li>
+        <li><input id="resourcesChecklist" type="checkbox"> All Resources were learned</li>
+        <li><input id="quizChecklist" type="checkbox"> Pass the Phishing Quiz</li>
+    </ul>
+</article>
+
+<article class="content-card">
+    <h3>Recent Activity</h3>
+    <table class="recent-activity-table">
+        <tr>
+            <th>Action</th>
+            <th>Date</th>
+        </tr>
+        <tr>
+            <td>Logged In</td>
+            <td>Jan 22, 2026</td>
+        </tr>
+        <tr>
+            <td>Completed: Phishing 101</td>
+            <td>Jan 21, 2026</td>
+        </tr>
+        <tr id="quizActivityRow" class="is-hidden">
+            <td>Completed: Phishing Quiz</td>
+            <td id="quizActivityDate"></td>
+        </tr>
+    </table>
+</article>
+
+<article class="content-card is-hidden" id="quizFeedbackCard">
+    <h3>Quiz Feedback</h3>
+    <p id="quizFeedbackText"></p>
+    <p id="quizFeedbackDate" class="muted"></p>
+</article>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="/JS/profile.js" defer></script>
+    <script src="/JS/quiz.js" defer></script>
+<%- include('../Includes/end.ejs') %>

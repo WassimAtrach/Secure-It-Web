@@ -1,0 +1,78 @@
+<%- include('../Includes/head.ejs') %>
+<%- include('../Includes/menu.ejs') %>
+
+    <section class="hero">
+        <h2>Expert Resources</h2>
+        <p>Curated videos and platforms to take your security knowledge to the next level.</p>
+    </section>
+
+    <div class="container">  
+        <main class="main-content"> 
+            
+            <section class="learning-section">
+                <h2>Video Masterclasses</h2>
+                
+             <div class="video-grid">
+                    <a href="https://www.youtube.com/watch?v=Y7zNlEMDmI4" target="_blank" class="video-card" data-resource-key="video_what_is_phishing?">
+                        <img src="https://img.youtube.com/vi/Y7zNlEMDmI4/maxresdefault.jpg" alt="Cybersecurity Video 1">
+                        <div class="play-button">▶</div>
+                        <div class="video-info">
+                            <h3>What is Phishing?</h3>
+                            <p>Click to watch on YouTube</p>
+                        </div>
+                    </a>
+                   
+                    <div class="video-card-slot" id="password-slot">
+                        <div class="video-card" id="password-image-card" style="cursor:pointer;">
+                            <img src="/Images/Password_Example.jpg" alt="Password Example" />
+                            <div class="click-overlay">Click on me</div>
+                            <div class="video-info">
+                                <h3>Why is it important to create a strong password?</h3>
+                                <p>Click the image to reveal the video</p>
+                            </div>
+                        </div>
+                        <a href="https://www.youtube.com/watch?v=YitHISP0Isk" target="_blank" class="video-card" data-resource-key="video_why_is_it_important_to_create_a_strong_password?">
+                            <img src="https://img.youtube.com/vi/YitHISP0Isk/maxresdefault.jpg" alt="Cybersecurity Video 2">
+                            <div class="play-button">▶</div>
+                            <div class="video-info">
+                                <h3>Why is it important to create a strong password?</h3>
+                                <p>Click to watch on YouTube</p>
+                            </div>
+                        </a>
+                    </div>
+                   
+                    <a href="https://www.youtube.com/watch?v=dFg6G8eMRbM" target="_blank" class="video-card" data-resource-key="video_cybersecurity_awareness">
+                        <img src="https://img.youtube.com/vi/dFg6G8eMRbM/maxresdefault.jpg" alt="Cybersecurity Video 3">
+                        <div class="play-button">▶</div>
+                        <div class="video-info">
+                            <h3>Cybersecurity Awareness</h3>
+                            <p>Click to watch on YouTube</p>
+                        </div>
+                    </a>
+                </div>
+            </section>
+
+            <hr class="section-divider">
+
+            <h2>Deep Learning Platforms</h2>
+            <div class="resource-grid">
+                <article class="content-card">
+                    <h3>TryHackMe</h3>
+                    <p>Interactive "hands-on" exercises for Blue Team and Red Team training.</p>
+                    <a href="https://tryhackme.com" target="_self" class="cta-btn small" data-resource-key="site_tryhackme">Visit TryHackMe</a>
+                </article>
+
+                <article class="content-card">
+                    <h3>W3Schools: Cybersecurity 101</h3>
+                    <p>Comprehensive guide covering the fundamentals of network protection.</p>
+                    <a href="https://www.w3schools.com/cybersecurity/" target="_blank" class="cta-btn small" data-resource-key="site_w3schools:_cybersecurity_101">Visit W3Schools</a>
+                </article>
+            </div>
+        </section>
+        </main>
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="/JS/resources.js"></script>
+<%- include('../Includes/end.ejs') %>

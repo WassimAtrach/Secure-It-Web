@@ -1,0 +1,49 @@
+<%- include('../Includes/head.ejs') %>
+<%- include('../Includes/menu.ejs') %>
+
+<main class="container">
+  <section class="login-page main-content" id="register-card">
+    <div class="login-card">
+      <h2>Create Account</h2>
+      <p class="sub">Sign up for a Secure-It account</p>
+      <% if (errorMessage) { %><p class="error"><%= errorMessage %></p><% } %>
+      <form id="register-form" action="/register" method="POST" novalidate>
+          <label for="reg-name">Full Name</label>
+          <input id="reg-name" name="name" type="text" required placeholder="Full Name">
+
+          <label for="reg-username">Username</label>
+          <input id="reg-username" name="username" type="text" required placeholder="Pick a username">
+
+          <label for="reg-email">Email</label>
+          <input id="reg-email" name="email" type="email" required placeholder="you@example.com">
+
+          <label for="reg-phone">Phone Number</label>
+          <input id="reg-phone" name="phone_number" type="text" required placeholder="050-0000000">
+
+          <label for="reg-gender">Gender</label>
+          <select id="reg-gender" name="gender">
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+              <option value="Other">Other</option>
+          </select>
+
+          <label for="reg-country">Country</label>
+          <input id="reg-country" name="country" type="text" required placeholder="Israel">
+
+          <label for="reg-zipcode">Zip Code</label>
+          <input id="reg-zipcode" name="zipcode" type="text" required placeholder="1234567">
+          
+          <label for="reg-password">Password</label>
+          <input id="reg-password" name="password" type="password" required placeholder="Password">
+
+          <label for="reg-confirm">Confirm Password</label>
+          <input id="reg-confirm" name="confirmPassword" type="password" required placeholder="Confirm">
+
+          <button type="submit" class="cta-btn full">Register</button>
+      </form>
+      <p class="muted center">Already have an account? <a href="/login">Sign in</a></p>
+    </div>
+  </section>
+</main>
+
+<%- include('../Includes/end.ejs') %>

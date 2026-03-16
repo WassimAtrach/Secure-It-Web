@@ -1,0 +1,22 @@
+<header class="main-header">
+    <h1 class="logo">
+        <img src="/Images/logo.png" alt="Secure-It Logo" class="header-logo">
+        Secure-It
+    </h1>
+    <nav class="navbar">
+        <ul class="nav-links">
+            <li><a href="/home">Home</a></li>
+            <li><a href="/learn">Learn</a></li>
+            <li><a href="/progress">Progress</a></li>
+            <li><a href="/resources">Resources</a></li>
+            <li><a href="/profile">Profile</a></li>
+            <% if (isAuthenticated) { %>
+                <li class="logout-item"><a class="logout-btn" href="/logout">Logout</a></li>
+            <% } else { %>
+                <li><a href="/login">Login</a></li>
+                <li><a href="/register">Signup</a></li>
+            <% } %>
+
+        </ul>
+    </nav>
+</header>

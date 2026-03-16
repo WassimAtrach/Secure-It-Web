@@ -1,0 +1,206 @@
+<%- include('../Includes/head.ejs') %>
+<%- include('../Includes/menu.ejs') %>
+ 
+    <div class="container dashboard-container">
+ 
+        <main class="main-content">
+ 
+            <section class="learning-section">
+                <h2 class="text-center mb-30">Security Management Tools</h2>
+                <p class="text-center mb-30">Select a tool to manage your digital safety. Click again to close.</p>
+ 
+                <div class="tools-container">
+                    <article class="content-card tool-card" onclick="toggleForm('audit-form')">
+                        <h3>🛡️ Home Audit</h3>
+                        <p>Evaluate your household devices.</p>
+                        <button class="cta-btn small">Start Audit</button>
+                    </article>
+ 
+                    <article class="content-card tool-card" onclick="toggleForm('goals-form')">
+                        <h3>🎯 Safety Goals</h3>
+                        <p>Set your personal milestones.</p>
+                        <button class="cta-btn small">Create Goal</button>
+                    </article>
+ 
+                    <article class="content-card tool-card" onclick="toggleForm('tools-form')">
+                        <h3>🛠️ Recommend</h3>
+                        <p>Share tools with others.</p>
+                        <button class="cta-btn small">Share Tool</button>
+                    </article>
+                </div>
+ 
+                <div id="forms-wrapper">
+ 
+                    <!-- Audit Form -->
+                    <div id="audit-form" class="content-card form-box audit">
+                        <h3>Home Security Audit Form</h3>
+                        <form class="questions" action="/progress/audit" method="POST">
+                            <label>Device: <input type="text" name="d_name" required></label>
+                            <label>Connection:
+                                <select name="connection_type" required>
+                                    <option value="WiFi">WiFi</option>
+                                    <option value="Ethernet">Ethernet</option>
+                                </select>
+                            </label>
+                            <label>OS: 
+                            <select name="os_type" required>
+                              <option value="" disabled selected>Select OS</option>
+                              <option value="Windows">Windows</option>
+                              <option value="macOS">macOS</option>
+                              <option value="Linux">Linux</option>
+                              <option value="Android">Android</option>
+                              <option value="iOS">iOS</option>
+                              <option value="Other">Other</option>
+                            </select>
+                            </label>
+                            <label>Update Date: <input type="date" name="audit_date" required></label>
+                            <label class="checkbox-inline"><span>Antivirus Installed?</span><input type="checkbox" name="antivirus" value="1"></label>
+                            <label>Score (1-10): <input type="range" min="1" max="10" name="score" required></label>
+                            <button type="submit" class="cta-btn">Submit Report</button>
+                            
+                        </form>
+                    </div>
+ 
+                    <!-- Goals Form -->
+                    <div id="goals-form" class="content-card form-box goals">
+                        <h3>Personal Security Goals</h3>
+                        <form class="questions" action="/progress/goal" method="POST">
+                            <label>Category: <input type="text" name="category" required></label>
+                            <label>Target Device: <input type="text" name="target_device" required></label>
+                            <label>Priority:
+                                <select name="priority" required>
+                                    <option value="High">High</option>
+                                    <option value="Low">Low</option>
+                                </select>
+                            </label>
+                            <label>Cost: <input type="number" name="cost" required></label>
+                            <label>Frequency: <input type="text" name="frequency" placeholder="e.g. Monthly" required></label>
+                            <label>Status: <input type="text" name="your_status" placeholder="Started" required></label>
+                            <button type="submit" class="cta-btn">Save Goal</button>
+                        </form>
+                    </div>
+ 
+                    <!-- Tools Form -->
+                    <div id="tools-form" class="content-card form-box tools">
+                        <h3>Community Recommendation</h3>
+                        <form class="questions" action="/progress/tool" method="POST">
+                            <label>Tool Name: <input type="text" name="tool_name" required></label>
+                            <label>Type: <input type="text" name="vpn_type" placeholder="VPN/AV" required></label>
+                            <label>Price Model: <input type="number" name="price_model" required></label>
+                            <fieldset>
+                                <legend>Rating (1-5):</legend>
+                                <label><input type="radio" name="rating" value="1"> 1</label>
+                                <label><input type="radio" name="rating" value="2"> 2</label>
+                                <label><input type="radio" name="rating" value="3"> 3</label>
+                                <label><input type="radio" name="rating" value="4"> 4</label>
+                                <label><input type="radio" name="rating" value="5"> 5</label>
+                            </fieldset>
+                            <label>Notes: <textarea rows="2" name="notes"></textarea></label>
+                            <label>Link: <input type="text" name="link" required></label>
+                            <button type="submit" class="cta-btn">Publish Tool</button>
+                        </form>
+                    </div>
+ 
+                </div>
+            </section>
+ 
+                        <hr class="section-divider">
+
+                        <!-- ===== Saved Audits ===== -->
+                        <section class="learning-section">
+                                <h2 class="text-center mb-20">My Audits</h2>
+                                <% if (audits && audits.length) { %>
+                                    <table class="recent-activity-table">
+                                        <tr>
+                                            <th>Device</th>
+                                            <th>Connection</th>
+                                            <th>OS</th>
+                                            <th>Audit Date</th>
+                                            <th>Antivirus</th>
+                                            <th>Score</th>
+                                        </tr>
+                                        <% audits.forEach(function(audit){ %>
+                                            <tr>
+                                                <td><%= audit.device_name %></td>
+                                                <td><%= audit.connection_type %></td>
+                                                <td><%= audit.os_type %></td>
+                                                <td><%= audit.audit_date ? new Date(audit.audit_date).toISOString().slice(0,10) : '' %></td>
+                                                <td><%= audit.antivirus_installed ? 'Yes' : 'No' %></td>
+                                                <td><%= audit.score %></td>
+                                            </tr>
+                                        <% }) %>
+                                    </table>
+                                <% } else { %>
+                                    <p class="text-center muted">No audits yet. Submit the audit form above.</p>
+                                <% } %>
+                        </section>
+
+                        <hr class="section-divider">
+
+                        <!-- ===== Saved Goals ===== -->
+                        <section class="learning-section">
+                                <h2 class="text-center mb-20">My Goals</h2>
+                                <% if (goals && goals.length) { %>
+                                    <table class="recent-activity-table">
+                                        <tr>
+                                            <th>Category</th>
+                                            <th>Target Device</th>
+                                            <th>Priority</th>
+                                            <th>Cost</th>
+                                            <th>Frequency</th>
+                                            <th>Status</th>
+                                        </tr>
+                                        <% goals.forEach(function(goal){ %>
+                                            <tr>
+                                                <td><%= goal.category %></td>
+                                                <td><%= goal.target_device %></td>
+                                                <td><%= goal.priority %></td>
+                                                <td><%= goal.cost %></td>
+                                                <td><%= goal.frequency %></td>
+                                                <td><%= goal.your_status %></td>
+                                            </tr>
+                                        <% }) %>
+                                    </table>
+                                <% } else { %>
+                                    <p class="text-center muted">No goals saved yet.</p>
+                                <% } %>
+                        </section>
+
+                        <hr class="section-divider">
+
+                        <!-- ===== Saved Tools ===== -->
+                        <section class="learning-section">
+                                <h2 class="text-center mb-20">Shared Tools</h2>
+                                <% if (tools && tools.length) { %>
+                                    <table class="recent-activity-table">
+                                        <tr>
+                                            <th>Tool</th>
+                                            <th>Type</th>
+                                            <th>Price</th>
+                                            <th>Rating</th>
+                                            <th>Notes</th>
+                                            <th>Link</th>
+                                        </tr>
+                                        <% tools.forEach(function(tool){ %>
+                                            <tr>
+                                                <td><%= tool.tool_name %></td>
+                                                <td><%= tool.vpn_type %></td>
+                                                <td><%= tool.price_model %></td>
+                                                <td><%= tool.rating %></td>
+                                                <td><%= tool.notes %></td>
+                                                <td><a href="<%= tool.link %>" target="_blank">Open</a></td>
+                                            </tr>
+                                        <% }) %>
+                                    </table>
+                                <% } else { %>
+                                    <p class="text-center muted">No tools shared yet.</p>
+                                <% } %>
+                        </section>
+ 
+        </main>
+ 
+    </div>
+    
+     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+        <script src="/JS/progress.js"></script>
+<%- include('../Includes/end.ejs') %>
