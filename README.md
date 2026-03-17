@@ -5,7 +5,7 @@ Secure-It is a beginner-friendly cyber security awareness website designed to he
 This repository contains the **home page** of the Secure-It project.
 
 ## 🌐 Live Demo
-[https://WassimAtrach.github.io/Secure-It-Web/](https://wassimatrach.github.io/Secure-It-Web/)
+[https://WassimAtrach.github.io/Secure-It-Web/](https://wassimatrach.github.io/Secure-It-Web/) - Note that this is only the homepage, the website is way more complicated :)
 
 ## 🎯 Project Goals
 * Raise awareness about common cyber threats.
